@@ -47,3 +47,6 @@ Code written with and adatped from ChatGPT Ai from prompt: "I want to take a loo
 #### TopicAnalysis
 Code written with and adapted from ChatGPT Ai from prompt: "I am looking at my Youtube Watch History from Google Takeout and have a topic analysis, based on something like a cluster from the data. In other words, I want to create a program that will give me relevant information about the distribution of content topics I watch. Use whatever library that you would like that would help with feedback and analysis. Additionally, make sure to utilize the "title" key for this program as that is where the relevant information about the videos lay."
 
+## Licensing
+"MIT" License
+Look up for more information
