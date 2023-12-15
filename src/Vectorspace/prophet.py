@@ -3,6 +3,13 @@ from collections import Counter
 from querying import convert_to_pst, load_watch_history
 import calendar
 
+
+__author__ = "Luke Rozinskas"
+__copyright__ = "Copyright 2023, Westmont College"
+__credits__ = ["Luke Rozinskas", "ChatGPT Ai"]
+__license__ = "MIT"
+__email__ = "lrozinskas@westmont.edu"
+
 def plot_youtube_traffic(watch_history):
     watch_dates = [convert_to_pst(entry['time']).date() for entry in watch_history]
     month_counts = Counter(date.month for date in watch_dates)

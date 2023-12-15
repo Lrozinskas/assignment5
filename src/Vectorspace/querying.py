@@ -7,6 +7,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pytz
 
+
+__author__ = "Luke Rozinskas"
+__copyright__ = "Copyright 2023, Westmont College"
+__credits__ = ["Luke Rozinskas", "ChatGPT Ai"]
+__license__ = "MIT"
+__email__ = "lrozinskas@westmont.edu"
+
 def load_watch_history(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         return json.load(file)
@@ -29,8 +36,6 @@ def get_time_of_day(hour):
         return "Afternoon"
     else:
         return "Evening/Night"
-
-
 
 def analyze_watch_times(watch_history):
     watch_times = [convert_to_pst(entry['time']).hour for entry in watch_history]
@@ -89,49 +94,6 @@ def display_top_videos(top_videos):
     print(table)
 
 
-
-
-def analyze_engagement(watch_history):
-    video_count = {}
-    channel_count = {}
-
-    for entry in watch_history:
-        video_id = entry.get('titleUrl', 'Unknown Video ID')
-        video_title = entry.get('title', 'Unknown Video Title')
-
-        # Counting video views
-        video_count[video_title] = video_count.get(video_title, 0) + 1
-
-        # Counting channel views if 'subtitles' is present
-        if 'subtitles' in entry:
-            channel_id = entry['subtitles'][0].get('url', 'Unknown Channel ID')
-            channel_name = entry['subtitles'][0].get('name', 'Unknown Channel Name')
-            channel_count[channel_name] = channel_count.get(channel_name, 0) + 1
-
-    return video_count, channel_count
-
-def display_engagement_analysis(video_count, channel_count):
-    video_table = PrettyTable()
-    video_table.field_names = ["#", "Video ID", "Watch Count"]
-
-    for i, (video_id, count) in enumerate(sorted(video_count.items(), key=lambda x: x[1], reverse=True)[:10], start=1):
-        video_table.add_row([i, video_id, count])
-
-    channel_table = PrettyTable()
-    channel_table.field_names = ["#", "Channel ID", "Watch Count"]
-
-    for i, (channel_id, count) in enumerate(sorted(channel_count.items(), key=lambda x: x[1], reverse=True)[:10], start=1):
-        channel_table.add_row([i, channel_id, count])
-
-    print("\nEngagement Analysis:")
-    print("\nMost-watched Videos:")
-    print(video_table)
-
-    print("\nMost-watched Channels:")
-    print(channel_table)
-
-
-
 def main():
     watch_history_file = '/home/lrozinskas/CS128/Data_folder/history/watch-history.json'
     watch_history = load_watch_history(watch_history_file)
@@ -166,9 +128,6 @@ def main():
         display_top_videos(filtered_top_videos)
         analyze_watch_times_for_query(user_query, filtered_top_videos)
 
-    # Analyze engagement
-    video_count, channel_count = analyze_engagement(watch_history)
-    display_engagement_analysis(video_count, channel_count)
 
 if __name__ == "__main__":
     main()
