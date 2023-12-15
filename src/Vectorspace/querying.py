@@ -1,11 +1,8 @@
 from sklearn.metrics.pairwise import linear_kernel
 from prettytable import PrettyTable
-
 import json
-import re
 from datetime import datetime
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pytz
@@ -13,13 +10,6 @@ import pytz
 def load_watch_history(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         return json.load(file)
-
-
-# def convert_to_pst(time_str):
-#     utc_time = datetime.strptime(time_str, "%Y-%m-%dT%H:%M:%S.%fZ")
-#     utc_time = pytz.utc.localize(utc_time)
-#     pst_time = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
-#     return pst_time
 
 def convert_to_pst(time_str):
     # Handle milliseconds in the timestamp
@@ -140,33 +130,6 @@ def display_engagement_analysis(video_count, channel_count):
     print("\nMost-watched Channels:")
     print(channel_table)
 
-
-
-
-# def main():
-#     watch_history_file = '/home/lrozinskas/CS128/Data_folder/history/watch-history.json'
-#     watch_history = load_watch_history(watch_history_file)
-#
-#     titles = [entry['title'] for entry in watch_history]
-#     vectorizer = TfidfVectorizer(stop_words='english')
-#     tfidf_matrix = get_tfidf_scores(titles, vectorizer)
-#
-#     while True:
-#         user_query = input("Enter your query (or 'exit' to stop): ")
-#         if user_query.lower() == 'exit':
-#             break
-#
-#         top_videos = get_top_videos(user_query, watch_history, vectorizer, tfidf_matrix)
-#         display_top_videos([(video, score) for video, score in top_videos])
-#
-#         analyze_watch_times_for_query(user_query, top_videos)
-#
-#     # Analyze engagement
-#     video_count, channel_count = analyze_engagement(watch_history)
-#     display_engagement_analysis(video_count, channel_count)
-#
-# if __name__ == "__main__":
-#     main()
 
 
 def main():
