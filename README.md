@@ -33,6 +33,9 @@ This file take the matplotlib library and utilizes its functionalities produce s
 #### Topicanalysis
 This file utilizes a jupyter notebook and the pyLDAvis.gensim_models to look over the data we take in (the terms from video titles) and creates an intertopic distance map with principal componenet axis to plot the distributions. 
 
+#### Tests
+Not fully working, check updates in Python and imports to see if able to remedy
+
 
 ## Credits
 #### General Analysis
