@@ -51,7 +51,6 @@ def display_watch_time_analysis(watch_times):
     plt.show()
 
 
-
 def analyze_watch_times_for_query(query, top_videos):
     print(f"\nWatch Time Analysis for Query: {query}")
 
