@@ -135,10 +135,9 @@ import time
 import pickle
 import argparse
 import json
-import os
 from nltk import SnowballStemmer
 
-from Vectorspace.Vectorspace_modification import Document, Corpus, Vector, analyze_watch_times, rank_documents
+from Attempts.Vectorspace_modification import Document, Corpus, Vector, analyze_watch_times
 
 __author__ = "Mike Ryu"
 __copyright__ = "Copyright 2023, Westmont College, Mike Ryu"
@@ -181,7 +180,7 @@ def main() -> None:
     print("Example Vector:", example_vector.vec)
 
     # Utilize analyze_watch_times
-    analyze_watch_times(corpus, "example_keyword")
+    analyze_watch_times(corpus, "soccer")
 
 
 def setup_argument_parser() -> argparse.ArgumentParser:

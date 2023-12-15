@@ -256,9 +256,19 @@ if os.path.exists(json_file_path_windows):
     # Create an instance of the Corpus class
     # corpus = Corpus(documents=documents)
 
+
+
+
+
     # TF-IDF calculation using scikit-learn
     vectorizer = TfidfVectorizer(stop_words='english')
     tfidf_matrix = vectorizer.fit_transform([f"{document.title} {document.words}" for document in corpus])
+
+    print("TF-IDF Matrix:")
+    print(tfidf_matrix)
+
+    # Print the terms (features) learned by the vectorizer
+    # print("Terms (features):", vectorizer.get_feature_names())
 
     # def rank_documents(query, tfidf_matrix, corpus):
     #     query_vector = vectorizer.transform([query])
@@ -266,15 +276,21 @@ if os.path.exists(json_file_path_windows):
     #     ranked_documents = sorted(enumerate(similarities), key=lambda x: x[1], reverse=True)
     #     return ranked_documents
 
-    def rank_documents(query, corpus):
-        # TF-IDF calculation using scikit-learn
-        vectorizer = TfidfVectorizer(stop_words='english')
-        tfidf_matrix = vectorizer.fit_transform([f"{document.title} {document.words}" for document in corpus])
+    # def rank_documents(query, corpus):
+    #     # TF-IDF calculation using scikit-learn
+    #     vectorizer = TfidfVectorizer(stop_words='english')
+    #     tfidf_matrix = vectorizer.fit_transform([f"{document.title} {document.words}" for document in corpus])
+    #
+    #     query_vector = vectorizer.transform([query])
+    #     similarities = cosine_similarity(query_vector, tfidf_matrix).flatten()
+    #     ranked_documents = sorted(enumerate(similarities), key=lambda x: x[1], reverse=True)
+    #
+    #     return ranked_documents
 
+    def rank_documents(query, vectorizer, tfidf_matrix, corpus):
         query_vector = vectorizer.transform([query])
         similarities = cosine_similarity(query_vector, tfidf_matrix).flatten()
         ranked_documents = sorted(enumerate(similarities), key=lambda x: x[1], reverse=True)
-
         return ranked_documents
 
     # # Example usage
